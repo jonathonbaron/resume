@@ -1,0 +1,2362 @@
+<!-- Begin Document -->
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+
+<!-- Define CSS Styles -->
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/home/baron1/Dropbox/github/html2canvas/dist/html2canvas.js"></script>
+    <style>
+    /* Define Table Style */
+
+    table {
+        border-collapse: collapse;
+        cellpadding: 0px;
+        cellspacing: 0px;
+        max-width: 100%;
+        max-height: 100%
+    }
+
+    /* Define Resume Field Styles */
+
+    /* Resume Field Header Styles */
+
+    /* Resume Field Header Year */
+
+    .res_header0 {
+        background-color: #EEEEEE;
+        height: 20px;
+        width: 80px;
+        border-bottom: 1px solid black;
+        border-right: 1px dashed black;
+        border-left: 1px solid black;
+        padding: 1px;
+    }
+    /* Resume Field Header Month */
+    .res_header1 {
+        background-color: #EEEEEE;
+        height: 20px;
+        width: 40px;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+        padding: 1px;
+    }
+    /* Resume Field Header Description */
+    .res_header2 {
+        background-color: #EEEEEE;
+        height: 20px;
+        width: 506px;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+        padding: 1px;
+    }
+    /* Resume Field Main Styles */
+    /* Resume Field Main Year */
+    .res_main0 {
+        height: 28px;
+        width: 80px;
+        border-bottom: 1px solid black;
+        border-right: 1px dashed black;
+        padding: 1px;
+    }
+    /* Resume Field Main Month */
+    .res_main1 {
+        height: 28px;
+        width: 40px;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+        padding: 1px;
+    }
+    /* Resume Field Main Description */
+    .res_main2 {
+        height: 28px;
+        width: 506px;
+        border-bottom: 1px solid black;
+        padding: 1px;
+    }
+
+    /* Define Grid and Cell Borders; Shapes Denoted: Bottom (U), Top (\cap), Left (]), Right ([) */
+
+    /* "External" indicates External Borders */
+
+    /* 2px Borders Indicated: Bottom, Top, Left, Right */
+
+    /* All External (All) */
+
+    .tdae {
+        border-bottom: 2px solid black;
+        border-left: 2px solid black;
+        border-top: 2px solid black;
+        border-right: 2px solid black;
+        text-align: center;
+    }
+
+    /* All External (Top Left Right) */
+
+    .tdaetlr {
+        border-bottom: 1px solid black;
+        border-left: 2px solid black;
+        border-top: 2px solid black;
+        border-right: 2px solid black;
+        text-align: center;
+    }
+
+    /* All External (Bottom Top Left) */
+
+    .tdaebtl {
+        border-bottom: 2px solid black;
+        border-top: 2px solid black;
+        border-left: 2px solid black;
+        border-right: 1px solid black;
+        text-align: center;
+    }
+
+    /* Bottom */
+
+    .tdb {
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        text-align: center;
+    }
+
+    /* Bottom External (Left) */
+    .tdbel {
+        border-bottom: 1px solid black;
+        border-left: 2px solid black;
+        border-right: 1px solid black;
+        text-align: center;
+    }
+
+    /* Bottom External (Bottom Left) */
+
+    .tdbelb {
+        border-bottom: 2px solid black;
+        border-left: 2px solid black;
+        border-right: 1px solid black;
+        text-align: center;
+    }
+
+    /* Bottom External (Left Right) */
+
+    .tdbelr {
+        border-bottom: 1px solid black;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+        text-align: center;
+    }
+
+    /* Bottom External (Right) */
+
+    .tdber {
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
+        border-right: 2px solid black;
+        text-align: center;
+    }
+
+    /* Left */
+
+    .tdl {
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
+        border-top: 1px solid black;
+        text-align: center;
+    }
+
+    /* Bottom Left Corner External (Left) */
+
+    .tdblel {
+        border-bottom: 1px solid black;
+        border-left: 2px solid black;
+        text-align: center;
+    }
+
+    /* Right */
+
+    .tdr {
+        border-top: 1px solid black;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        text-align: center;
+    }
+
+    /* Right External (All) */
+
+    .tdre {
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+        border-right: 2px solid black;
+        text-align: center;
+    }
+
+    /* Bottom Right Corner External (Bottom Right) */
+
+    .tdbrebr {
+        border-bottom: 2px solid black;
+        border-right: 2px solid black;
+        text-align: center;
+    }
+
+    /* "Special" Cell Types */
+
+    /* Horizontals */
+
+    .tdh {
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        text-align: center;
+    }
+
+    /* Verticals */
+
+    .tdv {
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+        text-align: center;
+    }
+
+    /* None */
+
+    .tdn {
+        text-align: center;
+    }
+
+    /* Bottom Only External (Bottom) */
+
+    .tdbeb {
+        border-bottom: 2px solid black;
+        text-align: center;
+    }
+
+    /* Define Grid Cell Types */
+
+    /* Grid Cell Types */
+
+    .header {
+        grid-area: header;
+    }
+
+    .name_furi {
+        grid-area: name_furi;
+    }
+
+    .pic {
+        grid-area: pic;
+    }
+
+    .name_kanj {
+        grid-area: name_kanj;
+    }
+
+    .bday {
+        grid-area: bday;
+    }
+
+    .sex {
+        grid-area: sex;
+    }
+
+    .gutter0 {
+        grid-area: gutter0;
+    }
+
+    .gutter1 {
+        grid-area: gutter1;
+    }
+
+    .separator0 {
+        grid-area: separator0;
+    }
+
+    .separator1 {
+        grid-area: separator1;
+    }
+
+    .addr_furi0 {
+        grid-area: addr_furi0;
+    }
+
+    .contact {
+        grid-area: contact;
+    }
+
+    .addr0 {
+        grid-area: addr0;
+    }
+
+    .addr_furi1 {
+        grid-area: addr_furi1;
+    }
+
+    .addr1 {
+        grid-area: addr1;
+    }
+
+    .separator2 {
+        grid-area: separator2;
+    }
+
+    .res_fields {
+        grid-area: res_fields;
+    }
+
+    .box0 {
+        grid-area: box0;
+    }
+
+    .box1 {
+        grid-area: box1;
+    }
+
+    .box2 {
+        grid-area: box2;
+    }
+
+    .separator3 {
+        grid-area: separator3;
+    }
+
+    .final_fields {
+        grid-area: final_fields;
+    }
+
+    /* Define Document Containers */
+
+    /* Define Container for Left and Right Sides */
+
+    .container {
+        max-width: 624px;
+        max-height: 1000px;
+        width: 780px;
+    }
+
+    /* Define Resume Flex Container */
+
+    .box {
+        margin: 150px auto;
+        max-width: 1298px;
+        transform: scale(0.85); */
+        transform-origin: 0 0;
+        display: flex;
+        margin: auto auto;
+        justify-content: top;
+    }
+
+    /* Define Grid Containers for Left Elements */
+
+    /* Grid Container 0 Left grid Properties */
+
+    .grid-container0l {
+        display: grid;
+        grid-template-rows: 29px 20px 56px 48px 16px 20px 56px 20px 56px;
+        grid-template-columns: 180px 180px 88px 16px 48px 48px 48px 16px;
+        grid-template-areas: 'header header header gutter0 pic pic pic gutter1' 
+                             'name_furi name_furi name_furi gutter0 pic pic pic gutter1' 
+                             'name_kanj name_kanj name_kanj gutter0 pic pic pic gutter1' 
+                             'bday bday sex gutter0 pic pic pic gutter1' 
+                             'bday bday sex separator0 separator0 separator0 separator0 separator0' 
+                             'addr_furi0 addr_furi0 addr_furi0 addr_furi0 addr_furi0 contact contact contact' 
+                             'addr0 addr0 addr0 addr0 addr0 contact contact contact' 
+                             'addr_furi1 addr_furi1 addr_furi1 addr_furi1 addr_furi1 contact contact contact' 
+                             'addr1 addr1 addr1 addr1 addr1 contact contact contact';
+        grid-gap: 0px 0px;
+        background-color: #FFFFFF;
+    }
+
+    /* Grid Container 0 Left div Properties */
+
+    .grid-container0l>div {
+        max-height: 321px;
+        max-width: 624px;
+        background-color: #FFFFFF;
+        text-align: center;
+        font-size: 10px;
+        justify-items: stretch;
+    }
+    /* Grid Container 1 Left grid Properties */
+    .grid-container1l {
+        display: grid;
+        grid-template-areas:
+        'res_fields';
+        grid-gap: 0px  0px;
+        background-color: #FFFFFF;
+    }
+    /* Grid Container 1 Left div Properties */
+    .grid-container1l>div {
+        height: 493px;
+        width: 624px;
+        background-color: #FFFFFF;
+        text-align: center;
+        font-size: 12px;
+        justify-items: stretch;
+    }
+
+    /* Define Grid Containers for Right Elements */
+    /* Grid Container 0 Right grid Properties */
+    .grid-container0r {
+        display: grid;
+        grid-template-areas:
+        'res_fields';
+        grid-gap: 0px  0px;
+        background-color: #FFFFFF;
+    }
+    /* Grid Container 0 Right div Properties */
+    .grid-container0r>div {
+        width: 624px;
+        background-color: #FFFFFF;
+        text-align: center;
+        font-size: 10px;
+        justify-items: stretch;
+    }
+    .grid-container15r {
+      display: grid;
+      grid-template-rows: 100%;
+      grid-template-columns: 100%;
+      grid-template-areas: 'box0';
+      grid-gap: 10px 0px;
+      background-color: #FFFFFF;
+  }
+
+  /* Grid Container 1 Right div Properties */
+
+  .grid-container15r>div {
+      width: 624px;
+      height: 80px;
+      background-color: #FFFFFF;
+      text-align: center;
+      font-size: 10px;
+      justify-items: center;
+  }
+
+  /* Grid Container 1 Right grid Properties */
+  .grid-container1r {
+    display: grid;
+    grid-template-areas:
+    'box0';
+    grid-gap: 0px  0px;
+    background-color: #FFFFFF;
+}
+/* Grid Container 1 Right div Properties */
+.grid-container1r>div {
+    height: 166px;
+    width: 624px;
+    background-color: #FFFFFF;
+    text-align: center;
+    font-size: 10px;
+    justify-items: stretch;
+}
+/* Grid Container 2 Right grid Properties */
+.grid-container2r {
+    display: grid;
+    grid-template-columns: 464px 260px;
+    grid-template-areas:
+    'box0 box1';
+    grid-gap: 0px  0px;
+    background-color: #FFFFFF;
+}
+/* Grid Container 2 Right div Properties */
+.grid-container2r>div {
+    height: 193px;
+    width: 624px;
+    background-color: #FFFFFF;
+    text-align: center;
+    font-size: 10px;
+    justify-items: center;
+}
+/* Grid Container 3 Right grid Properties */
+.grid-container3r {
+    display: grid;
+    grid-template-columns: 624px;
+    grid-template-areas:
+    'box0';
+    grid-gap: 0px  0px;
+    background-color: #FFFFFF;
+}
+/* Grid Container 3 Right div Properties */
+.grid-container3r>div {
+    height: 200px;
+    width: 624px;
+    background-color: #FFFFFF;
+    text-align: center;
+    font-size: 10px;
+    justify-items: stretch;
+}
+
+/* Define Gutter Container */
+/* Gutter Container grid Properties */
+.grid-gutter {
+    display: grid;
+    grid-template-columns: 624px;
+    grid-template-areas:
+    'gutter0';
+    grid-gap: 0px  0px;
+    background-color: #FFFFFF;
+}
+/* Gutter container div Properties */
+.grid-gutter>div {
+    height: 16px;
+    width: 624px;
+    background-color: #FFFFFF;
+    text-align: center;
+    font-size: 12px;
+    justify-items: stretch;
+}
+
+/* Define Circle Container for Gender Field */
+/* Circle Container */
+.circle
+{-moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 2px solid black;
+    color:black;
+    padding-left:7px;
+    padding-right:7px;
+    padding-top:5px;
+    padding-bottom:5px;
+    font-size:1.3em;
+}
+</style>
+</head>
+
+<!-- Document Body -->
+
+<body>
+    <!-- Resume Container -->
+    <div class="box">
+
+        <!-- Left-Side Container -->
+        <div class="container" style="padding-right: 25px;">
+
+            <!-- Personal Information Container -->
+            <div class="grid-container0l">
+                <!-- Resume Header -->
+                <div class="header" style="width: 448px; height: 20px;"><span style="float: left; font-size: 20px;">履歴書</span><span style="float: right;font-size: 16px;">平成30&nbsp;&nbsp;&nbsp;7月&nbsp;&nbsp;&nbsp;1日</span></div>
+                <!-- Name Furigana -->
+                <div class="name_furi">
+                    <table class="tdaetlr" style="width: 448px; height: 20px;">
+                        <tr>
+                            <td style="text-align: left; padding-left: 4px">(ふりがな)<div style="display: inline; float: center; padding-left: 10px;" id="name_furigana"></div></td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- Picture -->
+                <div class="pic">
+                    <table class="tdae" style="width: 144px; height: 153px;">
+                        <tr>
+                            <td><img src="" id="pic" height="145px"/></td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- Name Kanji -->
+                <div class="name_kanj">
+                    <table class="tdbelr" style="width: 448px; height: 56px;">
+                        <!-- Name Field Header -->
+                        <tr>
+                            <td style="text-align: left; padding: 4px" valign="top">氏 名</td>
+                        </tr>
+                        <td style="text-align: left; padding: 4px"><span style="font-size: 15px;"><div id="name"></div></span></td>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- Birthday -->
+                <div class="bday">
+                    <table class="tdblel" style="width: 360px; height: 64px;">
+                        <tr>
+                            <td><span style="font-size: 15px;"><div id="dob"></div></span></td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- Sex -->
+                <div class="sex">
+                    <table class="tdber" style="width: 88px; height: 64px;">
+                        <tr>
+                            <td><span style="font-size: 12px;"><div id="m_circle"><span class="circle">男</span></div>
+                                <div id="m_no_circle"><span>男</span></div> ・
+                                <div id="f_circle"><span class="circle">女</span></div>
+                                <div id="f_no_circle"><span>女</span></div>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- Gutters and Separators Surrounding the Picture -->
+            <!-- Gutter 0 -->
+            <div class="gutter0" style="width: 16px; height: 144px;"></div>
+            <!-- Gutter 1 -->
+            <div class="gutter1" style="width: 16px; height: 152px;"></div>
+            <!-- Separator 0 (includes 1px border on top) -->
+            <div class="separator0">
+                <table class="tdbeb" style="width: 176px; height: 16px;">
+                    <tr>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- Address 0 Furigana -->
+            <div class="addr_furi0">
+                <table class="tdbel" style="width: 512px; height: 20px;border-bottom: 1px solid black;
+                border-left: 2px solid black;
+                border-right: 1px solid black;
+                text-align: center;">
+                <tr>
+                    <td style="text-align: left; padding-left: 4px">(ふりがな)</td>
+                </tr>
+            </table>
+        </div>
+        <!-- Contact Information Block -->
+        <!-- Fake Phone Numbers: https://www.fakephonenumber.org/Japan/phone_number_generator?state=Hiroshima -->
+        <div class="contact">
+            <table class="tdbrebr" style="width: 112px; height: 152px;">
+                <tr style="border-bottom: 1px solid black">
+                    <!-- Home Phone -->
+                    <td style="text-align: left; padding: 4px" valign="top">自宅の電話番号:</td>
+                </tr>
+                <!-- Cell Phone -->
+                <tr style="border-bottom: 1px solid black">
+                    <td style="text-align: left; padding: 4px" valign="top">携帯電話番号:</td>
+                </tr>
+                <!-- Email -->
+                <tr style="border-bottom: 1px solid black">
+                    <td style="text-align: left; padding: 4px" valign="top">ｅメールアドレス:</td>
+                </tr>
+                <!-- Additional Contact Info Space -->
+                <tr style="border-bottom: 1px solid black">
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <!-- Address 0 Kanji -->
+        <div class="addr0">
+            <table class="tdbel" style="width: 512px; height: 56px;border-bottom: 1px solid black;
+            border-left: 2px solid black;
+            border-right: 1px solid black;
+            text-align: center;">
+            <!-- Address 0 Field Header -->
+            <tr>
+                <td style="text-align: left; padding: 4px" valign="top">現住所 〒</td>
+            </tr>
+            <!-- Address 0 Field Here -->
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <!-- Address 1 Furigana -->
+    <div class="addr_furi1">
+        <table class="tdbel" style="width: 512px; height: 20px;border-bottom: 1px solid black;
+        border-left: 2px solid black;
+        border-right: 1px solid black;
+        text-align: center;">
+        <tr>
+            <td style="text-align: left; padding-left: 4px">(ふりがな)</td>
+        </tr>
+    </table>
+</div>
+<!-- Addres 1 Kanji -->
+<div class="addr1">
+    <table class="tdbelb" style="width: 512px; height: 56px;">
+        <!-- Address 1 Field Header -->
+        <tr>
+            <td style="text-align: left; padding: 4px" valign="top">連絡先〒</td>
+        </tr>
+        <!-- Address 1 Field Here -->
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<!-- Separator 2 -->
+<div class="separator2"></div>
+</div>
+
+<!-- Left Gutter Container -->
+<div class="grid-gutter" style="height: 15px;">
+    <div class="gutter0">
+    </div>
+</div>
+
+<!-- Left Resume Fields Container -->
+<div class="grid-container1l">
+    <!-- Resume Fields -->
+    <div class="res_fields">
+        <table class="tdae">
+            <!-- Resume Fields Header -->
+            <tr>
+                <td class="res_header0"><span style="font-size: 11px;">年</span></td>
+                <td class="res_header1"><span style="font-size: 11px;">月</span></td>
+                <td class="res_header2"><span style="font-size: 11px;">学歴 ･ 職歴（各別にまとめて書く）</span></td>
+            </tr>
+            <!-- Resume Fields Main -->
+            <!-- Resume Fields School -->
+            <tr>
+                <td class="res_main0"></td>
+                <td class="res_main1"></td>
+                <td class="res_main2" style="font-size: 11px; text-align: left; padding-left: 4px;">学歴</td>
+            </tr>
+            <tr>
+                <td class="res_main0">平成 20 年</td>
+                <td class="res_main1">3月</td>
+                <td class="res_main2" style="text-align: left; padding-left: 4px;"><span><div id="es"></div></span></td>
+            </tr>
+            <tr>
+                <td class="res_main0">平成 23 年</td>
+                <td class="res_main1">3月</td>
+                <td class="res_main2" style="text-align: left; padding-left: 4px;"><span><div id="ms"></div></span></td>
+            </tr>
+            <tr>
+                <td class="res_main0">平成 26 年</td>
+                <td class="res_main1">3月</td>
+                <td class="res_main2" style="text-align: left; padding-left: 4px;"><span><div id="hs"></div></span></td>
+            </tr>
+            <tr>
+                <td class="res_main0">平成 30 年</td>
+                <td class="res_main1">4月</td>
+                <td class="res_main2" style="text-align: left; padding-left: 4px;"><span><div id="univ" style="display: inline"></div>&nbsp;<div id="major" style="display: inline"></div></span></td>
+            </tr>
+            <tr>
+                <td class="res_main0"></td>
+                <td class="res_main1"></td>
+                <td class="res_main2" style="text-align: left; padding-left: 4px;"></td>
+            </tr>
+            <tr>
+                <td class="res_main0"></td>
+                <td class="res_main1"></td>
+                <td class="res_main2" style="text-align: left; padding-left: 4px;"></td>
+            </tr>
+            <tr>
+                <td class="res_main0"></td>
+                <td class="res_main1"></td>
+                <td class="res_main2" style="text-align: left; padding-left: 4px;"></td>
+            </tr>
+            <tr>
+                <td class="res_main0"></td>
+                <td class="res_main1"></td>
+                <td class="res_main2" style="text-align: left; padding-left: 4px;"></td>
+            </tr>
+            <tr>
+                <td class="res_main0"></td>
+                <td class="res_main1"></td>
+                <td class="res_main2" style="text-align: left; padding-left: 4px;"></td>
+            </tr>
+            <!-- Resume Fields Employment -->
+            <tr>
+                <td class="res_main0"></td>
+                <td class="res_main1"></td>
+                <td class="res_main2" style="font-size: 11px; text-align: left; padding-left: 4px;">職歴</td>
+            </tr>
+            <tr>
+                <td class="res_main0"><div id="part_dur"></div></td>
+                <td class="res_main1"></td>
+                <td class="res_main2" style="text-align: left; padding-left: 4px;"><span><div id="part_job"></div></span></td>
+            </tr>
+            <tr>
+                <td class="res_main0"></td>
+                <td class="res_main1"></td>
+                <td class="res_main2" style="text-align: right; padding-right: 4px;">以上</td>
+            </tr>
+            <tr>
+                <td class="res_main0"></td>
+                <td class="res_main1"></td>
+                <td class="res_main2" style="text-align: left; padding-left: 4px;"></td>
+            </tr>
+            <tr>
+                <td class="res_main0"></td>
+                <td class="res_main1"></td>
+                <td class="res_main2" style="text-align: left; padding-left: 4px;"></td>
+            </tr>
+            <tr>
+                <td class="res_main0"></td>
+                <td class="res_main1"></td>
+                <td class="res_main2" style="text-align: left; padding-left: 4px;"></td>
+            </tr>
+            <tr>
+                <td class="res_main0"></td>
+                <td class="res_main1"></td>
+                <td class="res_main2" style="text-align: left; padding-left: 4px;"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
+
+<!-- Right-Side Container -->
+<div class="container" style="padding-left: 25px;">
+
+    <!-- Awards Fields Container -->
+    <div class="grid-container0r">
+        <!-- Award Fields -->
+        <div class="res_fields">
+            <table class="tdae">
+                <!-- Award Fields Header -->
+                <tr>
+                    <td class="res_header0"><span style="font-size: 11px;">年</span></td>
+                    <td class="res_header1"><span style="font-size: 11px;">月</span></td>
+                    <td class="res_header2"><span style="font-size: 11px;">学歴 ･ 職歴（各別にまとめて書く）</span></td>
+                </tr>
+                <!-- Award Fields Main -->
+                <tr>
+                    <td class="res_main0"></td>
+                    <td class="res_main1"></td>
+                    <td class="res_main2" style="text-align: left; padding-left: 4px;"></td>
+                </tr>
+                <tr>
+                    <td class="res_main0"></td>
+                    <td class="res_main1"></td>
+                    <td class="res_main2" style="text-align: left; padding-left: 4px;"></td>
+                </tr>
+                <tr>
+                    <td class="res_main0"></td>
+                    <td class="res_main1"></td>
+                    <td class="res_main2" style="text-align: left; padding-left: 4px;"></td>
+                </tr>
+                <!-- End Resume Fields -->
+                <tr>
+                    <td class="res_main0"></td>
+                    <td class="res_main1"></td>
+                    <td class="res_main2" style="font-size: 11px; text-align: right; padding-right: 4px;"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Right Gutter Container -->
+    <div class="grid-gutter" style="height: 15px;">
+        <div class="gutter0">
+        </div>
+    </div>
+
+    <!-- Right Self PR Container -->
+    <div class="grid-container1r">
+        <!-- Right Self PR Box -->
+        <div class="box0">
+            <table class="tdae">
+                <!-- Right Self PR Field Header -->
+                <tr height="25px">
+                    <td style="text-align: left; padding: 5px;" valign="top">自己PR</td>
+                </tr>
+                <!-- Right Self PR Field Here -->
+                <tr>
+                    <td style="text-align: left; padding: 4px; width: 624px; height: 130px; font-size: 12px;" valign="top"><span><div id="self_pr"></div></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Right Gutter Container -->
+    <div class="grid-gutter" style="height: 15px;">
+        <div class="gutter0">
+        </div>
+    </div>
+
+    <!-- Right Licenses Container -->
+    <div class="grid-container15r">
+        <!-- Right Licenses Box -->
+        <div class="box0">
+            <table class="tdae">
+                <!-- Right Licenses Field Header -->
+                <tr height="20px">
+                    <td style="text-align: left; padding: 4px; width: 624px;" valign="top">免許 ・ 資格</td>
+                </tr>
+                <tr style="text-align: left; padding: 4px;  height: 40px; font-size: 12px;">
+                    <td>
+                        <div id="quals"></div>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; padding-right: 4px; width: 624px;" valign="top">以上</td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Right Gutter Container -->
+<div class="grid-gutter" style="height: 15px;">
+    <div class="gutter0">
+    </div>
+</div>
+
+<!-- Right Personal Container -->
+<div class="grid-container2r">
+    <!-- Right Personal Container Motivations -->
+    <div class="box0">
+        <table class="tdaebtl" style="width: 464px; height: 200px;">
+            <tr>
+                <!-- Motivations -->
+                <td class="res_header2">志望の動機、特技、好きな学科など</td>
+            </tr>
+            <tr>
+                <!-- Specific Motivations Field Header -->
+                <td style="text-align: left; padding: 4px" valign="top" height=25px>志望の動機、特技、好きな学科など</td>
+            </tr>
+            <!-- Specific Motivations Field Here -->
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Personal Container Commuting, Dependents Information -->
+    <div class="box1">
+        <table class="tdre" style="height: 200px; width: 160px;">
+            <tr>
+                <!-- Commuting Time -->
+                <td colspan="2" style="text-align: left; padding: 4px; border-bottom: 1px solid black" valign="top">通勤時間<br><br></td>
+            </tr>
+            <tr>
+                <!-- Number of Dependents (Excl. Spouse) -->
+                <td colspan="2" style="text-align: left; padding: 4px; border-bottom: 1px solid black" valign="top">扶養家族数（配偶者を除く)<br><br><span style="float: right;">0人</span></td>
+            </tr>
+            <tr>
+                <!-- Spouse -->
+                <td class="tdr" style="padding: 4px;" valign="top">配偶者<br><br>有 ・ <span class="circle">無</span></td>
+                <!-- Spousal Support -->
+                <td class="tdn" style="padding: 4px;" valign="top">配偶者の扶養 義務
+                    <br><br>有 ・ <span class="circle">無</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Right Gutter Container -->
+    <div class="grid-gutter" style="height: 15px;">
+        <div class="gutter0">
+        </div>
+    </div>
+
+    <!-- Right Hope Entry Field Container -->
+    <div class="grid-container3r">
+        <!-- Hope Entry Container -->
+        <div class="box0">
+            <table class="tdae" style="width: 624px;">
+                <tr>
+                    <!-- Hope Entry Header -->
+                    <td class="res_header2">本人希望記入欄（特に給料･職種･勤務時間･勤務地･その他についての希望などがあれば記入）</td>
+                </tr>
+                <tr>
+                    <td class="res_main0" style="text-align: left; padding-left: 4px;"><span><div id="desired_field_0"></div></span></td>
+                </tr>
+                <tr>
+                    <td class="res_main0" style="text-align: left; padding-left: 4px;"><span><div id="desired_field_1"></div></span></td>
+                </tr>
+                <tr>
+                    <td class="res_main0" style="text-align: left; padding-left: 4px;"><span><div id="desired_field_2"></div></span></td>
+                </tr>
+                <tr>
+                    <td class="res_main0" style="text-align: left; padding-left: 4px;"><span><div id="desired_field_3"></div></span></td>
+                </tr>
+                <tr>
+                    <td class="res_main0" style="text-align: left; padding-left: 4px;"><span><div id="desired_field_4"></div></span></td>
+                </tr>
+                <tr>
+                    <td class="res_main0" style="text-align: left; padding-left: 4px;"><span><div id="desired_field_5"></div></span></td>
+                </tr>
+                <tr>
+                    <td class="res_main0" style="text-align: left; padding-left: 4px;"><span><div id="desired_field_5"></div></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- End Document -->
+<script>
+    if (sessionStorage.reloadcount) {
+        var sex = JSON.parse(localStorage.getItem("sex"));
+        var field_outs = JSON.parse(localStorage.getItem("field_outs"));
+        var field_ids = JSON.parse(localStorage.getItem("field_ids"));
+
+        var major = JSON.parse(localStorage.getItem("major"));
+        if (sex === '0') {
+            document.getElementById("m_no_circle").style.display = "inline";
+            document.getElementById("m_circle").style.display = "none";
+            document.getElementById("f_no_circle").style.display = "none";
+            document.getElementById("f_circle").style.display = "inline";
+            var pic = "https://yalesurvey.ca1.qualtrics.com/ControlPanel/Graphic.php?urlimage=true&IM=https://raw.githubusercontent.com/jonathonbaron/resume/master/female.png";
+        } else {
+            document.getElementById("m_circle").style.display = "inline";
+            document.getElementById("m_no_circle").style.display = "none";
+            document.getElementById("f_circle").style.display = "none";
+            document.getElementById("f_no_circle").style.display = "inline";
+            var pic = "https://yalesurvey.ca1.qualtrics.com/ControlPanel/Graphic.php?urlimage=true&IM=https://raw.githubusercontent.com/jonathonbaron/resume/master/male.png";
+        }
+        document.getElementById('pic').src = pic;
+        for (i = 0; i < field_ids.length - 1; i++) {
+            document.getElementById(field_ids[i]).innerHTML = field_outs[i];
+        }
+        document.getElementById("major").innerHTML = major;
+        sessionStorage.reloadcount = Number(sessionStorage.reloadcount) + 1;
+    } else {
+        sessionStorage.reloadcount = 1;
+        res_obj = {
+            "res_obj_text": [],
+            "next_ord_keys": {
+                "treat_0": {
+                    "treat_0_text": ["name_nationality"],
+                    "next_ord_keys": {
+                        "treat_00": {
+                            "treat_00_text": ["japanese_names"],
+                            "next_ord_keys": {
+                                "treat_000": {
+                                    "treat_000_text": ["female"],
+                                    "next_ord_keys": {
+                                        "treat_0000": {
+                                            "treat_0000_text": ["明日香"],
+                                            "next_ord_keys": {
+                                                "treat_00000": ["佐藤   明日香", "さとう  あすか"],
+                                                "treat_00001": ["鈴木   明日香", "すずき  あすか"],
+                                                "treat_00002": ["高橋   明日香", "たかはし  あすか"],
+                                                "treat_00003": ["田中   明日香", "たなか  あすか"],
+                                                "treat_00004": ["伊藤   明日香", "いとう  あすか"]
+                                            }
+                                        },
+                                        "treat_0001": {
+                                            "treat_0001_text": ["美咲"],
+                                            "next_ord_keys": {
+                                                "treat_00010": ["佐藤   美咲", "さとう  ななみ"],
+                                                "treat_00011": ["鈴木   美咲", "すずき  ななみ"],
+                                                "treat_00012": ["高橋   美咲", "たかはし  ななみ"],
+                                                "treat_00013": ["田中   美咲", "たなか  ななみ"],
+                                                "treat_00014": ["伊藤   美咲", "いとう  ななみ"]
+                                            }
+                                        },
+                                        "treat_0002": {
+                                            "treat_0002_text": ["七海"],
+                                            "next_ord_keys": {
+                                                "treat_00020": ["佐藤   七海", "さとう  ななみ"],
+                                                "treat_00021": ["鈴木   七海", "すずき  ななみ"],
+                                                "treat_00022": ["高橋   七海", "たかはし  ななみ"],
+                                                "treat_00023": ["田中   七海", "たなか  ななみ"],
+                                                "treat_00024": ["伊藤   七海", "いとう  ななみ"]
+                                            }
+                                        },
+                                        "treat_0003": {
+                                            "treat_0003_text": ["彩花"],
+                                            "next_ord_keys": {
+                                                "treat_00030": ["佐藤   彩花", "さとう  あやか"],
+                                                "treat_00031": ["鈴木   彩花", "すずき  あやか"],
+                                                "treat_00032": ["高橋   彩花", "たかはし  あやか"],
+                                                "treat_00033": ["田中   彩花", "たなか  あやか"],
+                                                "treat_00034": ["伊藤   彩花", "いとう  あやか"]
+                                            }
+                                        },
+                                        "treat_0004": {
+                                            "treat_0004_text": ["優花"],
+                                            "next_ord_keys": {
+                                                "treat_00040": ["佐藤   優花", "さとう  ゆうか"],
+                                                "treat_00041": ["鈴木   優花", "すずき  ゆうか"],
+                                                "treat_00042": ["高橋   優花", "たかはし  ゆうか"],
+                                                "treat_00043": ["田中   優花", "たなか  ゆうか"],
+                                                "treat_00044": ["伊藤   優花", "いとう  ゆうか"]
+                                            }
+                                        }
+                                    }
+                                },
+                                "treat_001": {
+                                    "treat_001_text": ["male"],
+                                    "next_ord_keys": {
+                                        "treat_0010": {
+                                            "treat_0010_text": ["翔太"],
+                                            "next_ord_keys": {
+                                                "treat_00100": ["佐藤   翔太", "さとう  しょうた"],
+                                                "treat_00101": ["鈴木   翔太", "すずき  しょうた"],
+                                                "treat_00102": ["高橋   翔太", "たかはし  しょうた"],
+                                                "treat_00103": ["田中   翔太", "たなか  しょうた"],
+                                                "treat_00104": ["伊藤   翔太", "いとう  しょうた"]
+                                            }
+                                        },
+                                        "treat_0011": {
+                                            "treat_0011_text": ["翔"],
+                                            "next_ord_keys": {
+                                                "treat_00110": ["佐藤   翔", "さとう  しょう"],
+                                                "treat_00111": ["鈴木   翔", "すずき  しょう"],
+                                                "treat_00112": ["高橋   翔", "たかはし  しょう"],
+                                                "treat_00113": ["田中   翔", "たなか  しょう"],
+                                                "treat_00114": ["伊藤   翔", "いとう  しょう"]
+                                            }
+                                        },
+                                        "treat_0012": {
+                                            "treat_0012_text": ["健太"],
+                                            "next_ord_keys": {
+                                                "treat_00120": ["佐藤   健太", "さとう  けんた"],
+                                                "treat_00121": ["鈴木   健太", "すずき  けんた"],
+                                                "treat_00122": ["高橋   健太", "たかはし  けんた"],
+                                                "treat_00123": ["田中   健太", "たなか  けんた"],
+                                                "treat_00124": ["伊藤   健太", "いとう  けんた"]
+                                            }
+                                        },
+                                        "treat_0013": {
+                                            "treat_0013_text": ["大輝"],
+                                            "next_ord_keys": {
+                                                "treat_00130": ["佐藤   大輝", "さとう  だいき"],
+                                                "treat_00131": ["鈴木   大輝", "すずき  だいき"],
+                                                "treat_00132": ["高橋   大輝", "たかはし  だいき"],
+                                                "treat_00133": ["田中   大輝", "たなか  だいき"],
+                                                "treat_00134": ["伊藤   大輝", "いとう  だいき"]
+                                            }
+                                        },
+                                        "treat_0014": {
+                                            "treat_0014_text": ["陸"],
+                                            "next_ord_keys": {
+                                                "treat_00140": ["佐藤   陸", "さとう  りく"],
+                                                "treat_00141": ["鈴木   陸", "すずき  りく"],
+                                                "treat_00142": ["高橋   陸", "たかはし  りく"],
+                                                "treat_00143": ["田中   陸", "たなか  りく"],
+                                                "treat_00144": ["伊藤   陸", "いとう  りく"]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "treat_01": {
+                            "treat_01_text": ["chinese_names"],
+                            "next_ord_keys": {
+                                "treat_010": {
+                                    "treat_010_text": ["female"],
+                                    "next_ord_keys": {
+                                        "treat_0100": {
+                                            "treat_0100_text": ["梓萱"],
+                                            "next_ord_keys": {
+                                                "treat_01000": ["李   梓萱", "リ  ズーシュエン"],
+                                                "treat_01001": ["王   梓萱", "オウ  ズーシュエン"],
+                                                "treat_01002": ["張   梓萱", "チョウ  ズーシュエン"],
+                                                "treat_01003": ["劉   梓萱", "リュウ  ズーシュエン"],
+                                                "treat_01004": ["陳   梓萱", "チン  ズーシュエン"]
+                                            }
+                                        },
+                                        "treat_0101": {
+                                            "treat_0101_text": ["梓涵"],
+                                            "next_ord_keys": {
+                                                "treat_01010": ["李   梓涵", "リ  ズーハン"],
+                                                "treat_01011": ["王   梓涵", "オウ  ズーハン"],
+                                                "treat_01012": ["張   梓涵", "チョウ  ズーハン"],
+                                                "treat_01013": ["劉   梓涵", "リュウ  ズーハン"],
+                                                "treat_01014": ["陳   梓涵", "チン  ズーハン"]
+                                            }
+                                        },
+                                        "treat_0102": {
+                                            "treat_0102_text": ["詩涵"],
+                                            "next_ord_keys": {
+                                                "treat_01020": ["李   詩涵", "リ  シーハン"],
+                                                "treat_01021": ["王   詩涵", "オウ  シーハン"],
+                                                "treat_01022": ["張   詩涵", "チョウ  シーハン"],
+                                                "treat_01023": ["劉   詩涵", "リュウ  シーハン"],
+                                                "treat_01024": ["陳   詩涵", "チン  シーハン"]
+                                            }
+                                        },
+                                        "treat_0103": {
+                                            "treat_0103_text": ["可馨"],
+                                            "next_ord_keys": {
+                                                "treat_01030": ["李   可馨", "リ  クェ ﾞアシン"],
+                                                "treat_01031": ["王   可馨", "オウ  ﾞアシン"],
+                                                "treat_01032": ["張   可馨", "チョウ  ﾞアシン"],
+                                                "treat_01033": ["劉   可馨", "リュウ  ﾞアシン"],
+                                                "treat_01034": ["陳   可馨", "チン  ﾞアシン"]
+                                            }
+                                        },
+                                        "treat_0104": {
+                                            "treat_0104_text": ["一諾"],
+                                            "next_ord_keys": {
+                                                "treat_01040": ["李   一諾", "リ  イーヌオ"],
+                                                "treat_01041": ["王   一諾", "オウ  イーヌオ"],
+                                                "treat_01042": ["張   一諾", "チョウ  イーヌオ"],
+                                                "treat_01043": ["劉   一諾", "リュウ  イーヌオ"],
+                                                "treat_01044": ["陳   一諾", "チン  イーヌオ"]
+                                            }
+                                        }
+                                    }
+                                },
+                                "treat_011": {
+                                    "treat_011_text": ["male"],
+                                    "next_ord_keys": {
+                                        "treat_0110": {
+                                            "treat_0110_text": ["浩然"],
+                                            "next_ord_keys": {
+                                                "treat_01100": ["李   浩然", "リ  ハオラン"],
+                                                "treat_01101": ["王   浩然", "オウ  ハオラン"],
+                                                "treat_01102": ["張   浩然", "チョウ  ハオラン"],
+                                                "treat_01103": ["劉   浩然", "リュウ  ハオラン"],
+                                                "treat_01104": ["陳   浩然", "チン  ハオラン"]
+                                            }
+                                        },
+                                        "treat_0111": {
+                                            "treat_0111_text": ["子玄"],
+                                            "next_ord_keys": {
+                                                "treat_01110": ["李   子玄", "リ  ズーシュエン"],
+                                                "treat_01111": ["王   子玄", "オウ  ズーシュエン"],
+                                                "treat_01112": ["張   子玄", "チョウ  ズーシュエン"],
+                                                "treat_01113": ["劉   子玄", "リュウ  ズーシュエン"],
+                                                "treat_01114": ["陳   子玄", "チン  ズーシュエン"]
+                                            }
+                                        },
+                                        "treat_0112": {
+                                            "treat_0112_text": ["皓玄"],
+                                            "next_ord_keys": {
+                                                "treat_01120": ["李   皓玄", "リ  ハオシュエン"],
+                                                "treat_01121": ["王   皓玄", "オウ  ハオシュエン"],
+                                                "treat_01122": ["張   皓玄", "チョウ  ハオシュエン"],
+                                                "treat_01123": ["劉   皓玄", "リュウ  ハオシュエン"],
+                                                "treat_01124": ["陳   皓玄", "チン  ハオシュエン"]
+                                            }
+                                        },
+                                        "treat_0113": {
+                                            "treat_0113_text": ["宇玄"],
+                                            "next_ord_keys": {
+                                                "treat_01130": ["李   宇玄", "リ  ユーシュエン"],
+                                                "treat_01131": ["王   宇玄", "オウ  ユーシュエン"],
+                                                "treat_01132": ["張   宇玄", "チョウ  ユーシュエン"],
+                                                "treat_01133": ["劉   宇玄", "リュウ  ユーシュエン"],
+                                                "treat_01134": ["陳   宇玄", "チン  ユーシュエン"]
+                                            }
+                                        },
+                                        "treat_0114": {
+                                            "treat_0114_text": ["浩宇"],
+                                            "next_ord_keys": {
+                                                "treat_01140": ["李   浩宇", "リ  ハオユー"],
+                                                "treat_01141": ["王   浩宇", "オウ  ハオユー"],
+                                                "treat_01142": ["張   浩宇", "チョウ  ハオユー"],
+                                                "treat_01143": ["劉   浩宇", "リュウ  ハオユー"],
+                                                "treat_01144": ["陳   浩宇", "チン  ハオユー"]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "treat_02": {
+                            "treat_02_text": ["korean_names"],
+                            "next_ord_keys": {
+                                "treat_020": {
+                                    "treat_020_text": ["female"],
+                                    "next_ord_keys": {
+                                        "treat_0200": {
+                                            "treat_0200_text": ["知恵"],
+                                            "next_ord_keys": {
+                                                "treat_02000": ["金   知恵", "キム  ジヘ"],
+                                                "treat_02001": ["李   知恵", "イ  ジヘ"],
+                                                "treat_02002": ["朴   知恵", "パック  ジヘ"],
+                                                "treat_02003": ["崔   知恵", "チェ  ジヘ"],
+                                                "treat_02004": ["鄭   知恵", "チョン  ジヘ"]
+                                            }
+                                        },
+                                        "treat_0201": {
+                                            "treat_0201_text": ["志恩"],
+                                            "next_ord_keys": {
+                                                "treat_02010": ["金   志恩", "キム  ジウン"],
+                                                "treat_02011": ["李   志恩", "イ  ジウン"],
+                                                "treat_02012": ["朴   志恩", "パック  ジウン"],
+                                                "treat_02013": ["崔   志恩", "チェ  ジウン"],
+                                                "treat_02014": ["鄭   志恩", "チョン  ジウン"]
+                                            }
+                                        },
+                                        "treat_0202": {
+                                            "treat_0202_text": ["恩志"],
+                                            "next_ord_keys": {
+                                                "treat_02020": ["金   恩志", "キム  ウンジ"],
+                                                "treat_02021": ["李   恩志", "イ  ウンジ"],
+                                                "treat_02022": ["朴   恩志", "パック  ウンジ"],
+                                                "treat_02023": ["崔   恩志", "チェ  ウンジ"],
+                                                "treat_02024": ["鄭   恩志", "チョン  ウンジ"]
+                                            }
+                                        },
+                                        "treat_0203": {
+                                            "treat_0203_text": ["民智"],
+                                            "next_ord_keys": {
+                                                "treat_02030": ["金   民智", "キム  ミンジ"],
+                                                "treat_02031": ["李   民智", "イ  ミンジ"],
+                                                "treat_02032": ["朴   民智", "パック  ミンジ"],
+                                                "treat_02033": ["崔   民智", "チェ  ミンジ"],
+                                                "treat_02034": ["鄭   民智", "チョン  ミンジ"]
+                                            }
+                                        },
+                                        "treat_0204": {
+                                            "treat_0204_text": ["恵真"],
+                                            "next_ord_keys": {
+                                                "treat_02040": ["金   恵真", "キム  ヘジン"],
+                                                "treat_02041": ["李   恵真", "イ  ヘジン"],
+                                                "treat_02042": ["朴   恵真", "パック  ヘジン"],
+                                                "treat_02043": ["崔   恵真", "チェ  ヘジン"],
+                                                "treat_02044": ["鄭   恵真", "チョン  ヘジン"]
+                                            }
+                                        }
+                                    }
+                                },
+                                "treat_021": {
+                                    "treat_021_text": ["male"],
+                                    "next_ord_keys": {
+                                        "treat_0210": {
+                                            "treat_0210_text": ["智薰"],
+                                            "next_ord_keys": {
+                                                "treat_02100": ["金   智薰", "キム  チフン"],
+                                                "treat_02101": ["李   智薰", "イ  チフン"],
+                                                "treat_02102": ["朴   智薰", "パック  チフン"],
+                                                "treat_02103": ["崔   智薰", "チェ  チフン"],
+                                                "treat_02104": ["鄭   智薰", "チョン  チフン"]
+                                            }
+                                        },
+                                        "treat_0211": {
+                                            "treat_0211_text": ["賢宇"],
+                                            "next_ord_keys": {
+                                                "treat_02110": ["金   賢宇", "キム  ヒョヌ"],
+                                                "treat_02111": ["李   賢宇", "イ  ヒョヌ"],
+                                                "treat_02112": ["朴   賢宇", "パック  ヒョヌ"],
+                                                "treat_02113": ["崔   賢宇", "チェ  ヒョヌ"],
+                                                "treat_02114": ["鄭   賢宇", "チョン  ヒョヌ"]
+                                            }
+                                        },
+                                        "treat_0212": {
+                                            "treat_0212_text": ["尚民"],
+                                            "next_ord_keys": {
+                                                "treat_02120": ["金   尚民", "キム  スンミン"],
+                                                "treat_02121": ["李   尚民", "イ  スンミン"],
+                                                "treat_02122": ["朴   尚民", "パック  スンミン"],
+                                                "treat_02123": ["崔   尚民", "チェ  スンミン"],
+                                                "treat_02124": ["鄭   尚民", "チョン  スンミン"]
+                                            }
+                                        },
+                                        "treat_0213": {
+                                            "treat_0213_text": ["昇鉉"],
+                                            "next_ord_keys": {
+                                                "treat_02130": ["金   昇鉉", "キム  スンヒョン"],
+                                                "treat_02131": ["李   昇鉉", "イ  スンヒョン"],
+                                                "treat_02132": ["朴   昇鉉", "パック  スンヒョン"],
+                                                "treat_02133": ["崔   昇鉉", "チェ  スンヒョン"],
+                                                "treat_02134": ["鄭   昇鉉", "チョン  スンヒョン"]
+                                            }
+                                        },
+                                        "treat_0214": {
+                                            "treat_0214_text": ["岷秀"],
+                                            "next_ord_keys": {
+                                                "treat_02140": ["金   岷秀", "キム  ミンス"],
+                                                "treat_02141": ["李   岷秀", "イ  ミンス"],
+                                                "treat_02142": ["朴   岷秀", "パック  ミンス"],
+                                                "treat_02143": ["崔   岷秀", "チェ  ミンス"],
+                                                "treat_02144": ["鄭   岷秀", "チョン  ミンス"]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "treat_03": {
+                            "treat_03_text": ["american_names"],
+                            "next_ord_keys": {
+                                "treat_030": {
+                                    "treat_030_text": ["female"],
+                                    "next_ord_keys": {
+                                        "treat_0300": {
+                                            "treat_0300_text": ["ジェシカ"],
+                                            "next_ord_keys": {
+                                                "treat_03000": ["スミス   ジェシカ", ""],
+                                                "treat_03001": ["ジョンソン   ジェシカ", ""],
+                                                "treat_03002": ["ウィリアムズ   ジェシカ", ""],
+                                                "treat_03003": ["ブラウン   ジェシカ", ""],
+                                                "treat_03004": ["ジョーンズ   ジェシカ", ""]
+                                            }
+                                        },
+                                        "treat_0301": {
+                                            "treat_0301_text": ["アシュリー"],
+                                            "next_ord_keys": {
+                                                "treat_03010": ["スミス   アシュリー", ""],
+                                                "treat_03011": ["ジョンソン   アシュリー", ""],
+                                                "treat_03012": ["ウィリアムズ   アシュリー", ""],
+                                                "treat_03013": ["ブラウン   アシュリー", ""],
+                                                "treat_03014": ["ジョーンズ   アシュリー", ""]
+                                            }
+                                        },
+                                        "treat_0302": {
+                                            "treat_0302_text": ["エミリー"],
+                                            "next_ord_keys": {
+                                                "treat_03020": ["スミス   エミリー", ""],
+                                                "treat_03021": ["ジョンソン   エミリー", ""],
+                                                "treat_03022": ["ウィリアムズ   エミリー", ""],
+                                                "treat_03023": ["ブラウン   エミリー", ""],
+                                                "treat_03024": ["ジョーンズ   エミリー", ""]
+                                            }
+                                        },
+                                        "treat_0303": {
+                                            "treat_0303_text": ["サマンサ"],
+                                            "next_ord_keys": {
+                                                "treat_03030": ["スミス   サマンサ", ""],
+                                                "treat_03031": ["ジョンソン   サマンサ", ""],
+                                                "treat_03032": ["ウィリアムズ   サマンサ", ""],
+                                                "treat_03033": ["ブラウン   サマンサ", ""],
+                                                "treat_03034": ["ジョーンズ   サマンサ", ""]
+                                            }
+                                        },
+                                        "treat_0304": {
+                                            "treat_0304_text": ["サラ"],
+                                            "next_ord_keys": {
+                                                "treat_03040": ["スミス   サラ", ""],
+                                                "treat_03041": ["ジョンソン   サラ", ""],
+                                                "treat_03042": ["ウィリアムズ   サラ", ""],
+                                                "treat_03043": ["ブラウン   サラ", ""],
+                                                "treat_03044": ["ジョーンズ   サラ", ""]
+                                            }
+                                        }
+                                    }
+                                },
+                                "treat_031": {
+                                    "treat_031_text": ["male"],
+                                    "next_ord_keys": {
+                                        "treat_0310": {
+                                            "treat_0310_text": ["マイケル"],
+                                            "next_ord_keys": {
+                                                "treat_03100": ["スミス   マイケル", ""],
+                                                "treat_03101": ["ジョンソン   マイケル", ""],
+                                                "treat_03102": ["ウィリアムズ   マイケル", ""],
+                                                "treat_03103": ["ブラウン   マイケル", ""],
+                                                "treat_03104": ["ジョーンズ   マイケル", ""]
+                                            }
+                                        },
+                                        "treat_0311": {
+                                            "treat_0311_text": ["マシュー"],
+                                            "next_ord_keys": {
+                                                "treat_03110": ["スミス   マシュー", ""],
+                                                "treat_03111": ["ジョンソン   マシュー", ""],
+                                                "treat_03112": ["ウィリアムズ   マシュー", ""],
+                                                "treat_03113": ["ブラウン   マシュー", ""],
+                                                "treat_03114": ["ジョーンズ   マシュー", ""]
+                                            }
+                                        },
+                                        "treat_0312": {
+                                            "treat_0312_text": ["クリストファー"],
+                                            "next_ord_keys": {
+                                                "treat_03120": ["スミス   クリストファー", ""],
+                                                "treat_03121": ["ジョンソン   クリストファー", ""],
+                                                "treat_03122": ["ウィリアムズ   クリストファー", ""],
+                                                "treat_03123": ["ブラウン   クリストファー", ""],
+                                                "treat_03124": ["ジョーンズ   クリストファー", ""]
+                                            }
+                                        },
+                                        "treat_0313": {
+                                            "treat_0313_text": ["ジェイコブ"],
+                                            "next_ord_keys": {
+                                                "treat_03130": ["スミス   ジェイコブ", ""],
+                                                "treat_03131": ["ジョンソン   ジェイコブ", ""],
+                                                "treat_03132": ["ウィリアムズ   ジェイコブ", ""],
+                                                "treat_03133": ["ブラウン   ジェイコブ", ""],
+                                                "treat_03134": ["ジョーンズ   ジェイコブ", ""]
+                                            }
+                                        },
+                                        "treat_0314": {
+                                            "treat_0314_text": ["ジョシュア"],
+                                            "next_ord_keys": {
+                                                "treat_03140": ["スミス   ジョシュア", ""],
+                                                "treat_03141": ["ジョンソン   ジョシュア", ""],
+                                                "treat_03142": ["ウィリアムズ   ジョシュア", ""],
+                                                "treat_03143": ["ブラウン   ジョシュア", ""],
+                                                "treat_03144": ["ジョーンズ   ジョシュア", ""]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "treat_1": {
+                    "treat_1_text": ["elementary_school"],
+                    "next_ord_keys": {
+                        "treat_10": {
+                            "treat_10_text": ["東京"],
+                            "next_ord_keys": {
+                                "treat_100": {
+                                    "treat_100_text": ["東京23区"],
+                                    "next_ord_keys": {
+                                        "treat_1000": ["世田谷区立小学校"],
+                                        "treat_1001": ["ジャパン・USAスクール"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_11": {
+                            "treat_11_text": ["宮城"],
+                            "next_ord_keys": {
+                                "treat_110": {
+                                    "treat_110_text": ["仙台市"],
+                                    "next_ord_keys": {
+                                        "treat_1100": ["仙台市立小学校"],
+                                        "treat_1101": ["仙台インターナショナルスクール小学校"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_12": {
+                            "treat_12_text": ["福島"],
+                            "next_ord_keys": {
+                                "treat_120": {
+                                    "treat_120_text": ["福島市"],
+                                    "next_ord_keys": {
+                                        "treat_1200": ["福島市立小学校"],
+                                        "treat_1201": ["国立福鳥大学附属小学校"]
+                                    }
+                                },
+                                "treat_121": {
+                                    "treat_121_text": ["双葉町"],
+                                    "next_ord_keys": {
+                                        "treat_1210": ["双葉町立小学校"],
+                                        "treat_1211": ["双葉町立インターナショナル小学校"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_13": {
+                            "treat_13_text": ["茨城"],
+                            "next_ord_keys": {
+                                "treat_130": {
+                                    "treat_130_text": ["つくば市"],
+                                    "next_ord_keys": {
+                                        "treat_1300": ["つくば市立小学校"],
+                                        "treat_1301": ["茨城アメリカンスクール小学校"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_14": {
+                            "treat_14_text": ["沖縄"],
+                            "next_ord_keys": {
+                                "treat_140": {
+                                    "treat_140_text": ["沖縄本島"],
+                                    "next_ord_keys": {
+                                        "treat_1400": ["那覇市立第三小学校"],
+                                        "treat_1401": ["ナハインターナショナルスクール"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_15": {
+                            "treat_15_text": ["広島"],
+                            "next_ord_keys": {
+                                "treat_150": {
+                                    "treat_150_text": ["広島市"],
+                                    "next_ord_keys": {
+                                        "treat_1500": ["広島市立小学校"],
+                                        "treat_1501": ["広島　USAスクール小学校"]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "treat_2": {
+                    "treat_2_text": ["middle_school"],
+                    "next_ord_keys": {
+                        "treat_20": {
+                            "treat_20_text": ["東京"],
+                            "next_ord_keys": {
+                                "treat_200": {
+                                    "treat_200_text": ["東京23区"],
+                                    "next_ord_keys": {
+                                        "treat_2000": ["世田谷区立学校"],
+                                        "treat_2001": ["ジャパン・USAスクール学校"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_21": {
+                            "treat_21_text": ["宮城"],
+                            "next_ord_keys": {
+                                "treat_210": {
+                                    "treat_210_text": ["仙台市"],
+                                    "next_ord_keys": {
+                                        "treat_2100": ["仙台市立学校"],
+                                        "treat_2101": ["仙台 インターナショナルスクール学校"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_22": {
+                            "treat_22_text": ["福島"],
+                            "next_ord_keys": {
+                                "treat_220": {
+                                    "treat_220_text": ["福島市"],
+                                    "next_ord_keys": {
+                                        "treat_2200": ["福島市立学校"],
+                                        "treat_2201": ["福島大学附属第二学校"]
+                                    }
+                                },
+                                "treat_221": {
+                                    "treat_221_text": ["双葉町"],
+                                    "next_ord_keys": {
+                                        "treat_2210": ["双葉町立学校"],
+                                        "treat_2211": ["双葉インターナショナル学校"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_23": {
+                            "treat_23_text": ["茨城"],
+                            "next_ord_keys": {
+                                "treat_230": {
+                                    "treat_230_text": ["つくば市"],
+                                    "next_ord_keys": {
+                                        "treat_2300": ["つくば市立学校"],
+                                        "treat_2301": ["茨城アメリカンススクール学校"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_24": {
+                            "treat_24_text": ["沖縄"],
+                            "next_ord_keys": {
+                                "treat_240": {
+                                    "treat_240_text": ["沖縄本島"],
+                                    "next_ord_keys": {
+                                        "treat_2400": ["沖縄本島立学校"],
+                                        "treat_2401": ["オキナワ インターナショナルスクール学校"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_25": {
+                            "treat_25_text": ["広島"],
+                            "next_ord_keys": {
+                                "treat_250": {
+                                    "treat_250_text": ["広島市"],
+                                    "next_ord_keys": {
+                                        "treat_2500": ["広島市立学校"],
+                                        "treat_2501": ["広島　USAスクール学校"]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "treat_3": {
+                    "treat_3_text": ["high_school"],
+                    "next_ord_keys": {
+                        "treat_30": {
+                            "treat_30_text": ["東京"],
+                            "next_ord_keys": {
+                                "treat_300": {
+                                    "treat_300_text": ["東京23区"],
+                                    "next_ord_keys": {
+                                        "treat_3000": ["世田谷区立中高校"],
+                                        "treat_3001": ["ジャパン・USAスクール中高校"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_31": {
+                            "treat_31_text": ["宮城"],
+                            "next_ord_keys": {
+                                "treat_310": {
+                                    "treat_310_text": ["仙台市"],
+                                    "next_ord_keys": {
+                                        "treat_3100": ["仙台第四高校"],
+                                        "treat_3101": ["仙台 インターナショナルスクール中高校"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_32": {
+                            "treat_32_text": ["福島"],
+                            "next_ord_keys": {
+                                "treat_320": {
+                                    "treat_320_text": ["福島市"],
+                                    "next_ord_keys": {
+                                        "treat_3200": ["福島第二高校"],
+                                        "treat_3201": ["福島大学附属第二高校"]
+                                    }
+                                },
+                                "treat_321": {
+                                    "treat_321_text": ["双葉町"],
+                                    "next_ord_keys": {
+                                        "treat_3210": ["双葉中央高校"],
+                                        "treat_3211": ["双葉インターナショナル中高校"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_33": {
+                            "treat_33_text": ["茨城"],
+                            "next_ord_keys": {
+                                "treat_330": {
+                                    "treat_330_text": ["つくば市"],
+                                    "next_ord_keys": {
+                                        "treat_3300": ["つくば西高校"],
+                                        "treat_3301": ["茨城アメリカンススクール中高校"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_34": {
+                            "treat_34_text": ["沖縄"],
+                            "next_ord_keys": {
+                                "treat_340": {
+                                    "treat_340_text": ["沖縄本島"],
+                                    "next_ord_keys": {
+                                        "treat_3400": ["那覇南高校"],
+                                        "treat_3401": ["オキナワ インターナショナルスクール中高校"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_35": {
+                            "treat_35_text": ["広島"],
+                            "next_ord_keys": {
+                                "treat_350": {
+                                    "treat_350_text": ["広島市"],
+                                    "next_ord_keys": {
+                                        "treat_3500": ["広島第一高校"],
+                                        "treat_3501": ["広島　USAスクール中高校"]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "treat_4": {
+                    "treat_4_text": ["college"],
+                    "next_ord_keys": {
+                        "treat_40": {
+                            "treat_40_text": ["東京"],
+                            "next_ord_keys": {
+                                "treat_400": {
+                                    "treat_400_text": ["東京23区"],
+                                    "next_ord_keys": {
+                                        "treat_4000": ["東京中央大学"],
+                                        "treat_4001": ["東都私立大学"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_41": {
+                            "treat_41_text": ["宮城"],
+                            "next_ord_keys": {
+                                "treat_410": {
+                                    "treat_410_text": ["仙台市"],
+                                    "next_ord_keys": {
+                                        "treat_4100": ["北東大学"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_42": {
+                            "treat_42_text": ["福島"],
+                            "next_ord_keys": {
+                                "treat_420": {
+                                    "treat_420_text": ["福島市"],
+                                    "next_ord_keys": {
+                                        "treat_4200": ["福島中央大学"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_43": {
+                            "treat_43_text": ["茨城"],
+                            "next_ord_keys": {
+                                "treat_430": {
+                                    "treat_430_text": ["つくば市"],
+                                    "next_ord_keys": {
+                                        "treat_4300": ["筑葉大学"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_44": {
+                            "treat_44_text": ["沖縄"],
+                            "next_ord_keys": {
+                                "treat_440": {
+                                    "treat_440_text": ["沖縄本島"],
+                                    "next_ord_keys": {
+                                        "treat_4400": ["那覇大学"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_45": {
+                            "treat_45_text": ["広島"],
+                            "next_ord_keys": {
+                                "treat_450": {
+                                    "treat_450_text": ["広島市"],
+                                    "next_ord_keys": {
+                                        "treat_4500": ["広島中央大学"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_46": {
+                            "treat_46_text": ["秋田"],
+                            "next_ord_keys": {
+                                "treat_460": {
+                                    "treat_460_text": ["秋田市"],
+                                    "next_ord_keys": {
+                                        "treat_4600": ["東北国際教養大学"]
+                                    }
+                                }
+                            }
+                        },
+                        "treat_47": {
+                            "treat_47_text": ["京都"],
+                            "next_ord_keys": {
+                                "treat_470": {
+                                    "treat_470_text": ["京都"],
+                                    "next_ord_keys": {
+                                        "treat_4700": ["古都大学"]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "treat_5": {
+                    "treat_5_text": ["job"],
+                    "next_ord_keys": {
+                        "treat_50": {
+                            "treat_50_text": ["平成 8 年 5 月 9 日生（満 22 歳）"],
+                            "next_ord_keys": {
+                                "treat_500": {
+                                    "treat_500_text": ["マーケティング"]
+                                },
+                                "treat_501": {
+                                    "treat_501_text": ["政治学"]
+                                },
+                                "treat_502": {
+                                    "treat_502_text": ["生物学"],
+                                    "next_ord_keys": {
+                                        "treat_5020": {
+                                            "treat_5020_text": ["specific_qual"],
+                                            "next_ord_keys": {
+                                                "treat_50200": {
+                                                    "treat_50200_text": ["special_vehicle_license"],
+                                                    "next_ord_keys": {
+                                                        "treat_502000": ["大型特殊自動車運転免許"]
+                                                    }
+                                                },
+                                                "treat_50201": {
+                                                    "treat_50201_text": ["towing_license"],
+                                                    "next_ord_keys": {
+                                                        "treat_502010": ["けん引免許"]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "treat_503": {
+                                    "treat_503_text": ["物理学"]
+                                },
+                                "treat_504": {
+                                    "treat_504_text": ["コンピュータサイエンス"]
+                                },
+                                "treat_505": {
+                                    "treat_505_text": ["看護学"],
+                                    "next_ord_keys": {
+                                        "treat_5050": {
+                                            "treat_5050_text": ["specific_qual"],
+                                            "next_ord_keys": {
+                                                "treat_50500": ["看護師免許"]
+                                            }
+                                        }
+                                    }
+                                },
+                                "treat_506": {
+                                    "treat_506_text": ["経済学"]
+                                }
+                            }
+                        },
+                        "treat_51": {
+                            "treat_51_text": ["平成 5 年 5 月 9 日生（満 25 歳）"],
+                            "next_ord_keys": {
+                                "treat_510": {
+                                    "treat_510_text": ["医科学"],
+                                    "next_ord_keys": {
+                                        "treat_5100": {
+                                            "treat_5100_text": ["sector"],
+                                            "next_ord_keys": {
+                                                "treat_51000": {
+                                                    "treat_51000_text": ["公的機関"],
+                                                    "next_ord_keys": {
+                                                        "treat_510000": ["国立こども病院"]
+                                                    }
+                                                },
+                                                "treat_51001": {
+                                                    "treat_51001_text": ["民間部門"],
+                                                    "next_ord_keys": {
+                                                        "treat_510010": ["private_placeholder"]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "treat_52": {
+                            "treat_52_text": ["平成 7 年 5 月 9 日生（満 23 歳）"],
+                            "next_ord_keys": {
+                                "treat_520": {
+                                    "treat_520_text": ["法学部"],
+                                    "next_ord_keys": {
+                                        "treat_5200": {
+                                            "treat_5200_text": ["sector"],
+                                            "next_ord_keys": {
+                                                "treat_52000": {
+                                                    "treat_52000_text": ["公的機関"],
+                                                    "next_ord_keys": {
+                                                        "treat_520000": ["日本政府 司法省"]
+                                                    }
+                                                },
+                                                "treat_52001": {
+                                                    "treat_52001_text": ["民間部門"],
+                                                    "next_ord_keys": {
+                                                        "treat_520010": ["private_placeholder"]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "treat_6": {
+                    "treat_6_text": ["licenses_quals"],
+                    "next_ord_keys": {
+                        "treat_60": {
+                            "treat_60_text": ["drivers_license"],
+                            "next_ord_keys": {
+                                "treat_600": ["普通自動車免許 (MT/AT)"]
+                            }
+                        },
+                        "treat_61": {
+                            "treat_61_text": ["TOEIC"],
+                            "next_ord_keys": {
+                                "treat_610": ["TOEIC: 820"],
+                                "treat_611": ["TOEIC: 600"]
+                            }
+                        },
+                        "tret_62": {
+                            "treat_62_text": ["civil_exam"],
+                            "next_ord_keys": {
+                                "treat_620": ["国家公務員I種試験 合格"]
+                            }
+                        }
+                    }
+                },
+                "treat_7": {
+                    "treat_7_text": ["self_pr"],
+                    "next_ord_keys": {
+                        "treat_70": {
+                            "treat_70_text": ["high_type"],
+                            "next_ord_keys": {
+                                "treat_700": ["私の強みはファシリテーション力です。チームメンバーの間を取り持ち、力を発揮しやすい能力を整えることができます。その強みを最も発揮したのがアルバイトでの経験です。最初は、語学の問題もあり、リーダーの日本人と他の外国人メンバーとの意思疎通が上手くいかず、チームはパフォーマンスを発揮できていない状況でした。そこで私は、彼らに現状の不満点を聞き出していきました。すると、リーダーの指示が曖昧で何をすればいいかわからないことが不満だとがわかりました。そこで私は、両者の間のパイプ役となり、リーダーの指示をわかりやすい形で彼らに伝えるようにしました。この取り組みの結果、チームがまとまり、多国籍メンバーのチームでも事業を立ち上げることが出来ました。"]
+                            }
+                        },
+                        "treat_71": {
+                            "treat_71_text": ["low_type"],
+                            "next_ord_keys": {
+                                "treat_702": ["遅刻しないのは、社会人として当たり前だと考えています。私は学生時代、早寝早起きを心がけていました。学業とバイトを両立させるためです。朝は7時からバイトだったので、毎朝5時に起きて仕度をして、毎日余裕を持って出勤していました。上司の方から『出勤のとき、いつも早いね』と褒められたこともあります。その結果、私は一度も遅刻することなく学業とアルバイトを両立できました。"],
+                                "treat_711": ["私は学生時代テニス部に所属し、仲間と共に部活動に励みました。アルバイトでは飲食店で働き幅広い方と関わったことで、社交性や仕事感を養うことができました。今でも貴重な経験だったなと感じています。これらの経験でリーダーシップや協調性、また自分の視野を広げることもできました。"]
+                            }
+                        }
+                    }
+                },
+                "treat_8": {
+                    "treat_8_text": ["experience"],
+                    "next_ord_keys": {
+                        "treat_80": {
+                            "treat_80_text": ["part_time_job"],
+                            "next_ord_keys": {
+                                "treat_800": ["金属部品加工会社にて、検査梱包、および製造工程の補助"],
+                                "treat_801": ["飲食店にて、ホールシフトリーダーとして勤務"],
+                                "treat_802": ["商社の輸出入管理部署にて、書類事務の補佐"],
+                                "treat_803": ["金融機関で営業事務の補佐"],
+                                "treat_804": ["広告代理店の出版部門にて、事務補佐"],
+                                "treat_805": ["デパートの地下食品専門店街で、販売スタッフとして勤務"],
+                                "treat_806": ["IT ソフトウェア会社にて、デバッグ、データ入力などの業務に従事"],
+                                "treat_807": ["IT企業にて、アプリのデザイン制作に従事"],
+                                "treat_808": ["医療クリニックの受付窓口のスタッフとして勤務"],
+                                "treat_809": ["高校生を対象にした少人数制塾で講師として勤務"],
+                                "treat_80a": [""]
+                            }
+                        }
+                    }
+                },
+                "treat_9": {
+                    "treat_9_text": ["desired_field"],
+                    "next_ord_keys": {
+                        "treat_90": ["勤務地や待遇は規定に従います。"],
+                        "treat_91": ["大学の授業のため、平日は15~19時の間にご連絡いただけますと幸いです。土日は終日連絡可能です。"],
+                        "treat_92": ["夜勤や週末の勤務も可能です。"],
+                        "treat_93": ["家庭の事情のため、平日日中のみの勤務を希望いたします。"],
+                        "treat_94": ["家庭の事情のため、遠方地への長期出張のない部署を希望いたします。"],
+                        "treat_95": {
+                            "treat_95_text": ["two_parts <between should be place name>"],
+                            "next_ord_keys": {
+                                "treat_950": ["家庭の事情で遠方への勤務が難しいため、", "での配属を希望します。"]
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        function pad(num, size) {
+            var s = num+"";
+            while (s.length < size) s = "0" + s;
+            return s;
+        }
+
+//         function exportToCsv(filename, rows) {
+//             var processRow = function(row) {
+//                 var finalVal = '';
+//                 for (var j = 0; j < row.length; j++) {
+//                     var innerValue = row[j] === null ? '' : row[j].toString();
+//                     if (row[j] instanceof Date) {
+//                         innerValue = row[j].toLocaleString();
+//                     };
+//                     var result = innerValue.replace(/"/g, '""');
+//                     if (result.search(/("|,|\n)/g) >= 0)
+//                         result = '"' + result + '"';
+//                     if (j > 0)
+//                         finalVal += ',';
+//                     finalVal += result;
+//                 }
+//                 return finalVal;
+//             };
+// 
+//             var csvFile = '';
+//             for (var i = 0; i < rows.length; i++) {
+//                 csvFile += processRow(rows[i]);
+//             }
+// 
+//             var blob = new Blob([csvFile], {
+//                 type: 'text/csv;charset=utf-8;'
+//             });
+//             if (navigator.msSaveBlob) { // IE 10+
+//                 navigator.msSaveBlob(blob, filename);
+//             } else {
+//                 var link = document.createElement("a");
+//                 if (link.download !== undefined) { // feature detection
+//                     // Browsers that support HTML5 download attribute
+//                     var url = URL.createObjectURL(blob);
+//                     link.setAttribute("href", url);
+//                     link.setAttribute("download", filename);
+//                     link.style.visibility = 'hidden';
+//                     document.body.appendChild(link);
+//                     link.click();
+//                     document.body.removeChild(link);
+//                 }
+//             }
+//          };
+
+        function arr_compare(arr1, arr2) {
+            var result = arr1.map(inx => {
+                if (arr2.contains(inx)) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+            return result;
+        };
+
+        function iterate(obj, stack) {
+            for (var property in obj) {
+                if (obj.hasOwnProperty(property)) {
+                    if (typeof obj[property] == "object") {
+                        iterate(obj[property], property);
+                    } else {
+                        console.log(property + "   " + obj[property]);
+                        $('#output').append($("<div/>").text(stack + ','))
+                    }
+                }
+            }
+        };
+        /// Define a prototype property for "contains."
+        // (Input: array; Output: array)
+        Array.prototype.contains = function(obj) {
+            return this.indexOf(obj) > -1;
+        };
+        /// Define a function to flatten arrays.
+        // (Input: array; Output: array)
+        function flatten(array) {
+            return [].concat.apply([], array);
+        };
+        /// Define a function to draw a single treatment.
+        // (Input: array; Output: array)
+        function draw_sngl(conditions) {
+            var selection = Math.floor(Math.random() * conditions.length);
+            return [conditions[selection]];
+        };
+        /// Define a function to (potentially) draw multiple treatments.
+        // (Input: array; Output: array)
+        function draw_mult(conditions) {
+            return conditions.filter(() => (Math.random() >= 0.5));
+        };
+        /// Define a function to select treatment keys based on an array of conditions.
+        // (Input: array; Output: array)
+        // function select(treatments, conditions) {
+        //     return conditions.map(condition =>
+        //         condition in treatments ? {
+        //             [condition]: treatments[condition]
+        //         } : {})
+        //     .reduce((res, o) => Object.assign(res, o), {});
+        // };
+        /// Define a function to generate the next order.
+        // (Input: object, string; Output: Object)
+        function prep_next_ord(this_ord, select_type = null) {
+            // Create an array containing this-order keys.
+            var this_ord_keys = Object.keys(this_ord);
+            // Assess whether any of this order's keys contain next-order keys.
+            // (Input: array; Output: boolean)
+            if (this_ord_keys.contains('results')) {
+                throw 'Results already returned';
+                return this_ord;
+            } else {
+                var complete = this_ord_keys.map((key) => {
+                    return Array.isArray(this_ord[key]);
+                }).every((el) => {
+                    return el === true;
+                });
+                // If no next-order keys remain ...
+                if (complete) {
+                    // Return an object containing result text and treatment codes.
+                    return Object.assign({
+                        results: this_ord,
+                        treatments: Object.keys(this_ord)
+                    })
+                    // If next-order keys remain ...
+                } else {
+                    // If one of this_ord_keys contains next-order keys ...
+                    if (this_ord_keys.contains('next_ord_keys')) {
+                        // Create an array containing the next-order keys.
+                        var next_ord_keys = Object.keys(this_ord['next_ord_keys']);
+                        // Create an empty object for storing the next-order object.
+                        var results = {};
+                        // If a single treatment is to be selected ...
+                        if (typeof select_type === 'undefined' || select_type === 'single') {
+                            // Create an array containing the selected treatment-code key.
+                            var selection = draw_sngl(next_ord_keys);
+                            // Include this order's constant text.
+                            results[this_ord_keys[0]] = this_ord[this_ord_keys[0]];
+                            // Store the next-order treatment-code keys for the selected treatment.
+                            results[selection] = this_ord['next_ord_keys'][selection];
+                            // Return the results object containing the next-order object.
+                            return results;
+                            // If multiple treatments are to be selected ...
+                        } else {
+                            // Create an array containing all selected treatment-code keys.
+                            var selection = draw_mult(next_ord_keys);
+                            // Include this order's constant text.
+                            results[this_ord_keys[0]] = this_ord[this_ord_keys[0]];
+                            // Store all next-order treatment-code keys in the selection array.
+                            for (var i = 0; i < selection.length; i++) {
+                                // Name the key of the next-order treatment-code keys according to
+                                // the current selected treatment.
+                                results[selection[i]] = this_ord['next_ord_keys'][selection[i]];
+                            }
+                            // Return the results object containing the next-order object.
+                            return results;
+                        }
+                        // If this_ord_keys only contains treatment keys ...
+                    } else {
+                        // Create an empty object for storing the next-order object.
+                        var results = {};
+                        // Return the relevant results or next-order treatment-code keys.
+                        for (var i = 0; i < this_ord_keys.length; i++) {
+                            // If the current-indexed key represents an array ...
+                            if (Array.isArray(this_ord[this_ord_keys[i]])) {
+                                // Include the array in the results object, stored under its name.
+                                results[this_ord_keys[i]] = this_ord[this_ord_keys[i]];
+                                // If the current-index key represents an object ...
+                            } else {
+                                // Create an array containing the treatment-code keys for this
+                                // order's constant text.
+                                var this_ord_text = Object.keys(this_ord[this_ord_keys[i]])[0];
+                                // Create an array containing the treatment-code keys for the
+                                // next-order treatment-code keys.
+                                var next_ord_obj = this_ord[this_ord_keys[i]]['next_ord_keys'];
+                                // If a single treatment is to be selected ...
+                                if (typeof select_type == 'undefined' || select_type === 'single') {
+                                    // Create an array containing the selected treatment-code key.
+                                    var next_ord_keys = draw_sngl(Object.keys(next_ord_obj));
+                                    // If multiple treatments are to be selected ...
+                                } else {
+                                    // Create an array containing all selected treatment-code keys.
+                                    var next_ord_keys = draw_mult(Object.keys(next_ord_obj));
+                                }
+                                // Store all relevant results or next-order treatment-code keys
+                                // in the next-order object.
+                                for (var j = 0; j < next_ord_keys.length; j++) {
+                                    // Include this order's constant text.
+                                    results[[this_ord_text]] = this_ord[this_ord_keys[i]][this_ord_text];
+                                    // Name the key of the next-order treatment-code keys according to
+                                    // the current selected treatment.
+                                    results[next_ord_keys[j]] = next_ord_obj[next_ord_keys[j]];
+                                }
+                            }
+                        }
+                        // Return the results object containing the next-order object.
+                        return results;
+                    }
+                }
+            }
+        };
+        /// Define a function to implement prep_next_ord() with arrays (to be used with Array.map()).
+        // (Input: object from array; output: array of objects)
+        function arr_pno(obj, select_type) {
+            if (Object.keys(obj).contains('results')) {
+                return obj;
+            } else {
+                var obj = prep_next_ord(obj, select_type);
+                return arr_pno(obj, select_type);
+            }
+        };
+
+        // Create an array with treatment names.
+        var treatments = Object.keys(res_obj['next_ord_keys']);
+
+        /// Select treatment values and store.
+        // Select values.
+        var selections = Object.keys(res_obj['next_ord_keys']).map((treat) => {
+            return arr_pno(res_obj['next_ord_keys'][treat]).results;
+        });
+
+        // Store treatment values.
+        var selected_treats = flatten(selections.map((key) => {
+            return Object.keys(key);
+        })).filter((treat) => {
+            return !treat.includes('text');
+        });
+        var treat_0 = arr_pno(res_obj['next_ord_keys']['treat_0'], "single");
+        var treat_1 = arr_pno(res_obj['next_ord_keys']['treat_1'], "single");
+        var treat_2 = arr_pno(res_obj['next_ord_keys']['treat_2'], "single");
+        var treat_3 = arr_pno(res_obj['next_ord_keys']['treat_3'], "single");
+        var treat_4 = arr_pno(res_obj['next_ord_keys']['treat_4'], "single");
+        var treat_5 = arr_pno(res_obj['next_ord_keys']['treat_5'], "single");
+        var treat_6 = res_obj['next_ord_keys']['treat_6'];
+        treat_6 = prep_next_ord(treat_6, "multiple")
+        treat_6 = arr_pno(treat_6, "single");
+        var treat_7 = arr_pno(res_obj['next_ord_keys']['treat_7'], "single");
+        var treat_8 = arr_pno(res_obj['next_ord_keys']['treat_8'], "single");
+        var treat_9 = prep_next_ord(res_obj['next_ord_keys']['treat_9'], "multiple");
+        treat_9 = arr_pno(treat_9, "single");
+
+        var results = treatments.map(treat => {
+            var treat_results = eval(treat)['results'];
+            var treat_text = Object.keys(treat_results).filter(key => {
+                return !key.includes('text');
+            }).map(key => {
+                return treat_results[key]
+            });
+            return flatten(treat_text);
+        });
+
+        var name = results[0][0];
+        var name_furigana = results[0][1];
+        var sex = Object.keys(treat_0['results']).map(key => {
+            return key.match(/\d+/)[0]
+        }).slice(1);
+        sex = sex[2][2];
+        if (sex === '0') {
+            document.getElementById("m_no_circle").style.display = "inline";
+            document.getElementById("m_circle").style.display = "none";
+            document.getElementById("f_no_circle").style.display = "none";
+            document.getElementById("f_circle").style.display = "inline";
+            var pic = "https://yalesurvey.ca1.qualtrics.com/ControlPanel/Graphic.php?urlimage=true&IM=https://raw.githubusercontent.com/jonathonbaron/resume/master/female.png";
+        } else {
+            document.getElementById("m_circle").style.display = "inline";
+            document.getElementById("m_no_circle").style.display = "none";
+            document.getElementById("f_circle").style.display = "none";
+            document.getElementById("f_no_circle").style.display = "inline";
+            var pic = "https://yalesurvey.ca1.qualtrics.com/ControlPanel/Graphic.php?urlimage=true&IM=https://raw.githubusercontent.com/jonathonbaron/resume/master/male.png";
+        }
+        document.getElementById('pic').src = pic;
+        var es = results[1];
+        var ms = results[2];
+        var hs = results[3];
+        var univ = results[4];
+        var job = results[5];
+        var major_keys = Object.keys(treat_5['results'])
+        var major = major_keys.map(key => {
+            return key.match(/\d+/)[0];
+        }).slice(1)[0][1];
+        if (major === '0') {
+            var dob = "平成 8 年 5 月 9 日生（満 22 歳）";
+        } else if (major === '1') {
+            var dob = "平成 5 年 5 月 9 日生（満 25 歳）";
+        } else {
+            var dob = "平成 7 年 5 月 9 日生（満 23 歳）";
+        };
+        major = treat_5['results'][major_keys[2]];
+        major = '('.concat(major, ')');
+        var quals = results[6];
+        quals = quals.filter(inx => {
+            return inx != ''
+        });
+        quals = quals.join(", ")
+        if (major.toString() === '(medicine)') {
+            quals = quals.concat(', ', "医師免許");
+        } else if (major.toString() === '(law)') {
+            quals = quals.concat(', ', "法曹資格");
+        }
+        var self_pr = results[7];
+        var part_job = results[8];
+        if (part_job.toString() === "") {
+            var part_dur = "";
+        } else {
+            var part_dur = "平成 27~30 年"
+        }
+        var field_ids = ["name_furigana", "name", "dob", "es", "ms", 
+        "hs", "univ", "part_dur", "part_job", "quals", "self_pr"];
+        var loc_key = Object.keys(treat_4['results'])[1];
+        var loc = treat_4['results'][loc_key];
+
+        var treat_9_keys = Object.keys(treat_9['results']);
+        var desired_field = treat_9_keys.filter((treat) => {
+            return !treat.includes('text');
+        }).map(key => {
+            if (treat_9['results'][key].length > 1) {
+                return treat_9['results'][key][0] + loc + treat_9['results'][key][1];
+            } else {
+                return treat_9['results'][key][0];
+            }
+        });
+        while (desired_field.length < 6) {
+            desired_field.push("");
+        };
+        for (var i = 0; i < desired_field.length; i++) {
+            window["desired_field_" + i] = desired_field[i];
+            field_ids.push("desired_field_" + i);
+        };
+
+        field_ids.push("major");
+
+        var field_outs = field_ids.map(id => {
+            var out = eval(id);
+            if (out != undefined) {
+                return out;
+            } else {
+                return "";
+            }
+        });
+        // Assign IDs according to field_ids strings.
+        for (i = 0; i < field_ids.length; i++) {
+            document.getElementById(field_ids[i]).innerHTML = field_outs[i];
+        };
+        localStorage.setItem("sex", JSON.stringify(sex));
+        localStorage.setItem("field_outs", JSON.stringify(field_outs));
+        localStorage.setItem("field_ids", JSON.stringify(field_ids));
+        localStorage.setItem("major", JSON.stringify(major)); 
+    };
+
+</script>
+</body>
+
+</html>
